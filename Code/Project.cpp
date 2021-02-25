@@ -17,6 +17,34 @@ string word[10];
 string showed;
 char guess;
 
+void menu()
+{
+	//hangman, intro of game
+
+	/*1*/ cout << "/" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(12) << "|||" << /*__*/ setw(12) << "|||" << setw(9) << "|||" << /*__*/ setw(12) << "||||||" << /*__*/ setw(9) << "|||" << setw(12) << "|||" << /*__*/ setw(12) << "|||" << /*__*/ setw(12) << "|||" << setw(9) << "|||" << setw(4) << "\\" << endl;
+
+	/*2*/ cout << "\\" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(9) << "|||" << setw(6) << "|||" << /*__*/ setw(11) << "|||||" << setw(7) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(9) << "||||||" << setw(9) << "||||||" << /*__*/ setw(9) << "|||" << setw(6) << "|||" << /*__*/ setw(11) << "|||||" << setw(7) << "|||" << setw(4) << "/" << endl;
+
+	/*3*/ cout << "/" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(3) << "||" << setw(6) << "|||" << /*__*/ setw(6) << "|||" << /*__*/ setw(15) << "|||" << setw(6) << "|||" << setw(6) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(3) << "||" << setw(6) << "|||" << setw(4) << "\\" << endl;
+
+	/*4*/ cout << "\\" << setw(15) << "||||||||||||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(4) << "||" << setw(5) << "|||" << /*__*/ setw(6) << "|||" << /*__*/ setw(15) << "|||" << setw(6) << "|||" << setw(6) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(4) << "||" << setw(5) << "|||" << setw(4) << "/" << endl;
+
+	/*5*/ cout << "/" << setw(15) << "||||||||||||" << /*__*/ setw(18) << "|||||||||||||||" << /*__*/ setw(6) << "|||" << setw(4) << "||" << setw(5) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "||||||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(18) << "|||||||||||||||" << /*__*/ setw(6) << "|||" << setw(4) << "||" << setw(5) << "|||" << setw(4) << "\\" << endl;
+
+	/*6*/ cout << "\\" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(18) << "|||||||||||||||" << /*__*/ setw(6) << "|||" << setw(5) << "||" << setw(4) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(18) << "|||||||||||||||" << /*__*/ setw(6) << "|||" << setw(5) << "||" << setw(4) << "|||" << setw(4) << "/" << endl;
+
+	/*7*/ cout << "/" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||||" << /*__*/ setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||||" << setw(4) << "\\" << endl;
+
+	/*8*/ cout << "\\" << setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||" << /*__*/ setw(12) << "||||||" << /*__*/ setw(9) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(12) << "|||" << /*__*/ setw(6) << "|||" << setw(9) << "|||" << setw(4) << "/" << endl;
+
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------" << endl << endl;
+
+	cout << setw(63) << " (1) New Game" << endl;
+	cout << setw(60) << " (2) Rules" << endl;
+	cout << setw(60) << " (3) About" << endl;
+	cout << setw(63) << "Choose an option: ";
+}
+
 void gameBoard()
 {
 	//list of the words
@@ -51,6 +79,7 @@ void gameBoard()
 
 void game()
 {
+	gameBoard();
 	while ((showed.compare(word[WordIndex]) != 0) and (wrong < 5))
 	{
 		//get user's guess and checks if it doubles
@@ -127,8 +156,44 @@ void game()
 	}
 }
 
+void menuOptions(int optionNum)
+{
+	switch (optionNum)
+	{
+	case 1:
+		game();
+		break;
+	case 2:
+		cout << endl << endl << endl;
+		cout << setw(10) << "|" << setw(50) << "(1) You could play individually or in groups." << setw(49) << "|" << endl;
+		cout << setw(10) << "|" << setw(52) << "(2) The player select a letter of the alphabet." << setw(47) << "|" << endl;
+		cout << setw(10) << "|" << setw(93) << "(3) If the letter is contained in the word/phrase, the group or individual takes another" << setw(6) << "|" << endl;
+		cout << setw(10) << "|" << setw(32) << "turn guessing a letter." << setw(67) << "|" << endl;
+		cout << setw(10) << "|" << setw(94) << "(4) If the letter is not contained in the word/phrase, a portion of the hangman is added." << setw(5) << "|" << endl;
+		cout << setw(10) << "|" << setw(34) << "(5) The game continues until:" << setw(65) << "|" << endl;
+		cout << setw(10) << "|" << setw(78) << "       the word/phrase is guessed (all letters are revealed) – WINNER" << setw(23) << "|" << endl;
+		cout << setw(10) << "|" << setw(45) << "                             or" << setw(54) << "|" << endl;
+		cout << setw(10) << "|" << setw(66) << "       all the parts of the hangman are displayed – LOSER" << setw(35) << "|" << endl;
+		break;
+	case 3:
+		cout << endl << endl << endl;
+		cout << setw(25) << "|" << setw(59) << "This code has been created by team \"The Dreamers\"." << setw(10) << "|" << endl;
+		cout << setw(25) << "|" << setw(41) << "Back-end Developer:  Ivan Burzev" << setw(28) << "|" << endl;
+		cout << setw(25) << "|" << setw(46) << "Front-end Developer:  Yoana Agafonova" << setw(23) << "|" << endl;
+		cout << setw(25) << "|" << setw(45) << "Scrum Trainer:  Karina Tangarzdhieva" << setw(24) << "|" << endl;
+		cout << setw(25) << "|" << setw(40) << "Code Checker:  Lyubomir Bozukov" << setw(29) << "|" << endl;
+		cout << setw(25) << "|" << setw(27) << "QA:  Yoan Dimitrov" << setw(42) << "|" << endl;
+		break;
+	}
+}
+
 int main()
 {
-	gameBoard();
-	game();
+	menu();
+
+	int optionNum;
+
+	cin >> optionNum;
+
+	menuOptions(optionNum);
 }
