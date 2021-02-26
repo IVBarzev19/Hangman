@@ -1,6 +1,4 @@
-// include libraries with commands
 #include <iostream>
-#include <iomanip>
 #include <string>
 #include <ctime>
 #include <cstdlib>
@@ -10,41 +8,26 @@ using namespace std;
 //====================|Global Variables|====================||
 //==========================================================||
 
+int optionNum;
 int WordIndex;
-int wrong = 0;
-char wrongGuesses[10];
-int letterCounter = 0;
+int letterCounter;
 string word[10];
 string showed;
-char guess;
 
-void menu()
+void logo()
 {
-	//hangman, intro of game
+	system("cls");
 
-	/*1*/ cout << "/   |||      |||         |||         |||      |||      ||||||      |||         |||         |||         |||      |||   \\" << endl;
-
-	/*2*/ cout << "\\   |||      |||      |||   |||      |||||    |||   |||      |||   ||||||   ||||||      |||   |||      |||||    |||   /" << endl;
-
-	/*3*/ cout << "/   |||      |||   |||         |||   ||| ||   |||   |||            |||   |||   |||   |||         |||   ||| ||   |||   \\" << endl;
-
-	/*4*/ cout << "\\   ||||||||||||   |||         |||   |||  ||  |||   |||            |||   |||   |||   |||         |||   |||  ||  |||   /" << endl;
-
-	/*5*/ cout << "/   ||||||||||||   |||||||||||||||   |||  ||  |||   |||   ||||||   |||         |||   |||||||||||||||   |||  ||  |||   \\" << endl;
-
-	/*6*/ cout << "\\   |||      |||   |||||||||||||||   |||   || |||   |||      |||   |||         |||   |||||||||||||||   |||   || |||   /" << endl;
-
-	/*7*/ cout << "/   |||      |||   |||         |||   |||    |||||   |||      |||   |||         |||   |||         |||   |||    |||||   \\" << endl;
-
-	/*8*/ cout << "\\   |||      |||   |||         |||   |||      |||      ||||||      |||         |||   |||         |||   |||      |||   /" << endl;
-
-	cout << endl << "-----------------------------------------------------------------------------------------------------------------------" << endl << endl;
-
-	cout << "                                                   (1) New Game" << endl;
-	cout << "                                                   (2) Rules" << endl;
-	cout << "                                                   (3) About" << endl;
-	cout << "                                                   (4) Exit" << endl;
-	cout << "                                             Choose an option: ";
+	cout << "/   |||      |||         |||         |||      |||      ||||||      |||         |||         |||         |||      |||   \\" << endl;
+	cout << "\\   |||      |||      |||   |||      |||||    |||   |||      |||   ||||||   ||||||      |||   |||      |||||    |||   /" << endl;
+	cout << "/   |||      |||   |||         |||   ||| ||   |||   |||            |||   |||   |||   |||         |||   ||| ||   |||   \\" << endl;
+	cout << "\\   ||||||||||||   |||         |||   |||  ||  |||   |||            |||   |||   |||   |||         |||   |||  ||  |||   /" << endl;
+	cout << "/   ||||||||||||   |||||||||||||||   |||  ||  |||   |||   ||||||   |||         |||   |||||||||||||||   |||  ||  |||   \\" << endl;
+	cout << "\\   |||      |||   |||||||||||||||   |||   || |||   |||      |||   |||         |||   |||||||||||||||   |||   || |||   /" << endl;
+	cout << "/   |||      |||   |||         |||   |||    |||||   |||      |||   |||         |||   |||         |||   |||    |||||   \\" << endl;
+	cout << "\\   |||      |||   |||         |||   |||      |||      ||||||      |||         |||   |||         |||   |||      |||   /" << endl;
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << endl;
 }
 
 void gameBoard()
@@ -79,24 +62,36 @@ void gameBoard()
 	cout << endl;
 }
 
-void game()
+void gameMechanics()
 {
+	letterCounter = 0;
+
+	char guess;
+
+	char wrongGuesses[10];
+
+	int wrongCounter = 0;
+
+	logo();
+
 	gameBoard();
-	while ((showed.compare(word[WordIndex]) != 0) and (wrong < 5))
+
+	while ((showed.compare(word[WordIndex]) != 0) and (wrongCounter < 5))
 	{
+
 		//get user's guess and checks if it doubles
 		cin >> guess;
 
 		//checks if the player was wrong
 		if (word[WordIndex].find(guess) == string::npos)
 		{
-			wrong++;
+			wrongCounter++;
 
 			wrongGuesses[letterCounter] = guess;
 
 			letterCounter++;
 
-			system("cls");
+			logo();
 
 			for (size_t i = 0; i < word[WordIndex].size(); i++)
 			{
@@ -104,25 +99,22 @@ void game()
 			}
 			cout << endl;
 
-			if (letterCounter > 0)
+			cout << "letters mistaken: ";
+
+			for (int i = 0; i < letterCounter; i++)
 			{
-				cout << "letters guessed: ";
-
-				for (int i = 0; i < letterCounter; i++)
-				{
-					cout << wrongGuesses[i] << " ";
-				}
-				cout << endl;
-
-				cout << letterCounter << "/5" << endl;
+				cout << wrongGuesses[i] << " ";
 			}
+			cout << endl;
+
+			cout << letterCounter << "/5" << endl;
+
 		}
 		else
 		{
-			//a loop that checks if the guess was right and if so shows a part of the word
+			//a loop that shows a part of the word
 			for (size_t i = 1; i < word[WordIndex].size(); i++)
 			{
-
 				for (size_t i = 0; i < word[WordIndex].size(); i++)
 				{
 					if (word[WordIndex][i] == guess)
@@ -131,7 +123,7 @@ void game()
 					}
 				}
 
-				system("cls");
+				logo();
 
 				for (size_t i = 0; i < word[WordIndex].size(); i++)
 				{
@@ -139,16 +131,13 @@ void game()
 				}
 				cout << endl;
 
-				if (letterCounter > 0)
-				{
-					cout << "letters guessed: ";
+				cout << "letters mistaken: ";
 
-					for (int i = 0; i < letterCounter; i++)
-					{
-						cout << wrongGuesses[i] << " ";
-					}
-					cout << endl;
+				for (int i = 0; i < letterCounter; i++)
+				{
+					cout << wrongGuesses[i] << " ";
 				}
+				cout << endl;
 
 				cout << letterCounter << "/5" << endl;
 
@@ -156,52 +145,101 @@ void game()
 			}
 		}
 	}
+	system("pause");
 }
 
-void menuOptions(int optionNum)
+void menuOptions()
 {
+	if (true)
+	{
+		cin >> optionNum;
+	}
+
 	switch (optionNum)
 	{
+
 	case 1:
-		game();
+	{
+		gameMechanics();
+
 		break;
+	}
+
 	case 2:
-		cout << endl << endl << endl;
+	{
+
+		logo();
+
 		cout << "          |     (1) You could play individually or in groups.                                                 |" << endl;
 		cout << "          |     (2) The player select a letter of the alphabet.                                               |" << endl;
 		cout << "          |     (3) If the letter is contained in the word/phrase, the group or individual takes another      |" << endl;
 		cout << "          |         turn guessing a letter.                                                                   |" << endl;
 		cout << "          |     (4) If the letter is not contained in the word/phrase, a portion of the hangman is added.     |" << endl;
 		cout << "          |     (5) The game continues until:                                                                 |" << endl;
-		cout << "          |            the word/phrase is guessed (all letters are revealed) – WINNER                         |" << endl;
+		cout << "          |            the word/phrase is guessed (all letters are revealed) = WINNER                         |" << endl;
 		cout << "          |                                  or                                                               |" << endl;
-		cout << "          |            all the parts of the hangman are displayed – LOSER                                     |" << endl;
+		cout << "          |            all the parts of the hangman are displayed = LOSER                                     |" << endl;
+		cout << endl;
+
+		system("pause");
+
 		break;
+	}
+
 	case 3:
-		cout << endl << endl << endl;
-		cout << "                        |                                                           This code has been created by team \"The Dreamers\".          |" << endl;
-		cout << "                        |                                         Back-end Developer:  Ivan Burzev                            |" << endl;
-		cout << "                        |                                              Front-end Developer:  Yoana Agafonova                       |" << endl;
-		cout << "                        |                                             Scrum Trainer:  Karina Tangarzdhieva                        |" << endl;
-		cout << "                        |                                        Code Checker:  Lyubomir Bozukov                             |" << endl;
-		cout << "                        |                           QA:  Yoan Dimitrov                                          |" << endl;
+	{
+
+		logo();
+
+		cout << "             |                    This code has been created by team \"The Dreamers\".                  |" << endl;
+		cout << "             |                                                                                        |" << endl;
+		cout << "             |                             Back-end Developer: Ivan Burzev                            |" << endl;
+		cout << "             |                           Front-end Developer: Yoana Agafonova                         |" << endl;
+		cout << "             |                            Scrum Trainer: Karina Tangarzdhieva                         |" << endl;
+		cout << "             |                              Code Checker: Lyubomir Bozukov                            |" << endl;
+		cout << "             |                                    QA: Yoan Dimitrov                                   |" << endl;
+		cout << endl;
+
+		system("pause");
+
 		break;
+	}
+
 	case 4:
+	{
+		logo();
 		cout << "See you again soon!" << endl;
+		system("pause");
+
+		break;
+	}
+
+	case 23:
+	{
+		logo();
+
+		cout << "Error page!" << endl << "I'm sorry! - Ivan Burzev" << endl;
+	}
+
+	default:
 		break;
 	}
 }
 
 int main()
 {
-	int optionNum;
-
-	cin >> optionNum;
-
 	while (optionNum != 4)
 	{
-		menu();
+		logo();
 
-		menuOptions(optionNum);
+		cout << "                                                   (1) New Game" << endl;
+		cout << "                                                   (2) Rules" << endl;
+		cout << "                                                   (3) About" << endl;
+		cout << "                                                   (4) Exit" << endl;
+		cout << "                                                 Choose an option: ";
+
+		optionNum = 23;
+
+		menuOptions();
 	}
 }
