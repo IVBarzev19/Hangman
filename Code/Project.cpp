@@ -60,6 +60,116 @@ void gameBoard()
 		cout << showed[j] << " ";
 	}
 	cout << endl;
+
+	cout << "Enter your guess: ";
+}
+
+bool hangman(int wrongCount)
+{
+	switch (wrongCount)
+	{
+	case 1:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 2:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 3:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 4:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 /|" << endl;
+		cout << "|                / |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 5:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 /|\\" << endl;
+		cout << "|                / | \\" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 6:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 /|\\" << endl;
+		cout << "|                / | \\" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 /" << endl;
+		cout << "|                /" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	case 7:
+		cout << "____________________" << endl;
+		cout << "|                  |" << endl;
+		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 /|\\" << endl;
+		cout << "|                / | \\" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                  |" << endl;
+		cout << "|                 / \\" << endl;
+		cout << "|                /   \\" << endl;
+		cout << "|" << endl;
+		cout << "|=======================" << endl;
+		break;
+	default:
+		break;
+	}
+	return 0;
 }
 
 void gameMechanics()
@@ -68,7 +178,7 @@ void gameMechanics()
 
 	char guess;
 
-	char wrongGuesses[10];
+	char wrongGuesses[7];
 
 	int wrongCounter = 0;
 
@@ -76,7 +186,7 @@ void gameMechanics()
 
 	gameBoard();
 
-	while ((showed.compare(word[WordIndex]) != 0) and (wrongCounter < 5))
+	while ((showed.compare(word[WordIndex]) != 0) and (wrongCounter < 7))
 	{
 
 		//get user's guess and checks if it doubles
@@ -107,8 +217,9 @@ void gameMechanics()
 			}
 			cout << endl;
 
-			cout << letterCounter << "/5" << endl;
+			hangman(wrongCounter);
 
+			cout << "Enter your guess: ";
 		}
 		else
 		{
@@ -139,7 +250,9 @@ void gameMechanics()
 				}
 				cout << endl;
 
-				cout << letterCounter << "/5" << endl;
+				hangman(wrongCounter);
+
+				cout << "Enter your guess: ";
 
 				break;
 			}
@@ -214,13 +327,6 @@ void menuOptions()
 		break;
 	}
 
-	case 23:
-	{
-		logo();
-
-		cout << "Error page!" << endl << "I'm sorry! - Ivan Burzev" << endl;
-	}
-
 	default:
 		break;
 	}
@@ -237,8 +343,6 @@ int main()
 		cout << "                                                   (3) About" << endl;
 		cout << "                                                   (4) Exit" << endl;
 		cout << "                                                 Choose an option: ";
-
-		optionNum = 23;
 
 		menuOptions();
 	}
