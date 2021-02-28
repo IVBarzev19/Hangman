@@ -1,4 +1,4 @@
-# Heading 1 Please follow next steps in order to be able to run the Hangman game
+Please follow next steps in order to be able to run the Hangman game
 
  
 
@@ -24,10 +24,10 @@ Visual Studio 2019 - IDE for the C++ code
 
 Authors: <br>
 • Ivan Burzev - Back-end developer <br>
-• Yoana Agafonova - Front-end <br>
+• Yoana Agafonova - Front-end developer <br>
 • Karina Tangardzhieva - Scrum Trainer <br>
 • Lubomir Bozukov - Code Checker <br>
-• Ioan Dimitrov - QA <br>
+• Ioan Dimitrov - Q&A engineer<br>
 
 Burgas, 1.03.2021
 
