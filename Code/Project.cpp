@@ -85,7 +85,7 @@ bool hangman(int wrongCount)
 	case 2:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|" << endl;
 		cout << "|" << endl;
 		cout << "|" << endl;
@@ -99,7 +99,7 @@ bool hangman(int wrongCount)
 	case 3:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                  |" << endl;
@@ -113,7 +113,7 @@ bool hangman(int wrongCount)
 	case 4:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                 /|" << endl;
 		cout << "|                / |" << endl;
@@ -127,7 +127,7 @@ bool hangman(int wrongCount)
 	case 5:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                 /|\\" << endl;
 		cout << "|                / | \\" << endl;
@@ -141,7 +141,7 @@ bool hangman(int wrongCount)
 	case 6:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                 /|\\" << endl;
 		cout << "|                / | \\" << endl;
@@ -155,7 +155,7 @@ bool hangman(int wrongCount)
 	case 7:
 		cout << "____________________" << endl;
 		cout << "|                  |" << endl;
-		cout << "|               ( ϖ _ ϖ)" << endl;
+		cout << "|               ( X _ X)" << endl;
 		cout << "|                  |" << endl;
 		cout << "|                 /|\\" << endl;
 		cout << "|                / | \\" << endl;
@@ -189,7 +189,6 @@ void gameMechanics()
 	while ((showed.compare(word[WordIndex]) != 0) and (wrongCounter < 7))
 	{
 
-		//get user's guess and checks if it doubles
 		cin >> guess;
 
 		//checks if the player was wrong
