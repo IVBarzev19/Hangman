@@ -9,7 +9,7 @@
 
 3.	Download the repo folder
 
-4.      Extract it wherever you want
+4.	Extract it wherever you want
 
 5.	Open the Code folder and click Project.sln and open it with Visual Studio
 
